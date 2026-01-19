@@ -28,13 +28,32 @@ jobs:
         with:
           ref: pages
 
-      - name: Create Cloudflare Pages project if not exists
-        uses: cloudflare/wrangler-action@v3
-        continue-on-error: true
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create xget
+      - name: Ensure Cloudflare Pages project exists
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_PAGES_PROJECT: xget
+          CF_PRODUCTION_BRANCH: main
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          api_base="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects"
+          auth_header="Authorization: Bearer ${CF_API_TOKEN}"
+
+          echo "Checking Pages project: ${CF_PAGES_PROJECT}"
+          if curl -fsS -H "${auth_header}" "${api_base}/${CF_PAGES_PROJECT}" >/dev/null; then
+            echo "Pages project exists."
+            exit 0
+          fi
+
+          echo "Pages project not found. Creating..."
+          create_payload="$(printf '{"name":"%s","production_branch":"%s"}' "${CF_PAGES_PROJECT}" "${CF_PRODUCTION_BRANCH}")"
+          curl -fsS -X POST -H "${auth_header}" -H "Content-Type: application/json" \
+            --data "${create_payload}" \
+            "${api_base}" >/dev/null
+
+          echo "Pages project created."
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
