@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout pages branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           ref: pages
 
@@ -60,4 +60,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=xget --branch=${{ github.ref_name }} --commit-dirty=true
+          command: pages deploy . --project-name=xget --branch=main --commit-dirty=true
