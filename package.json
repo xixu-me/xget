@@ -12,7 +12,7 @@
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "vitest": "^3.1.4",
-    "wrangler": "^4.60.0"
+    "wrangler": "^4.61.1"
   },
   "name": "xget",
   "private": false,
