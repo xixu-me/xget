@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "xget": "file:"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.12.8",
+    "@cloudflare/workers-types": "^4.20260124.0",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsdoc": "^62.5.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.1.4",
+    "wrangler": "^4.60.0"
+  },
+  "name": "xget",
+  "private": false,
+  "scripts": {
+    "deploy": "wrangler pages deploy .",
+    "dev": "wrangler dev",
+    "format": "prettier --write src/ test/ *.js *.json",
+    "format:check": "prettier --check src/ test/ *.js *.json",
+    "lint": "eslint src/ test/ adapters/",
+    "lint:fix": "eslint src/ test/ adapters/ --fix",
+    "start": "wrangler pages dev .",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}
