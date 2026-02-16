@@ -1,0 +1,6 @@
+[[edge_functions]]
+function = "edge-handler"
+path = "/*"
+
+[build]
+publish = "."
