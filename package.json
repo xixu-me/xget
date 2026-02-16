@@ -6,7 +6,7 @@
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.12.12",
     "@cloudflare/workers-types": "^4.20260124.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsdoc": "^62.5.5",
     "prettier": "^3.8.1",
