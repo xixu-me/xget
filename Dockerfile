@@ -18,8 +18,8 @@ FROM node:25-slim AS runtime
 RUN apt-get update && \
     apt-get install -y ca-certificates && \
     rm -rf /var/lib/apt/lists/* && \
-    npm install -g @cloudflare/workerd-linux-64 && \
-    ln -s /usr/local/lib/node_modules/@cloudflare/workerd-linux-64/bin/workerd /usr/local/bin/workerd && \
+    npm install -g @cloudflare/workerd-linux-arm64 && \
+    ln -s /usr/local/lib/node_modules/@cloudflare/workerd-linux-arm64/bin/workerd /usr/local/bin/workerd && \
     workerd --version
 
 WORKDIR /worker
