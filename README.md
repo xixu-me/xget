@@ -2803,3 +2803,8 @@ Made with ❤️ by [Xi Xu](https://xi-xu.me)
 </div>
 
 [![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you find bugs, typos, or have suggestions for improvement, feel free to open an Issue or submit a Pull Request.
