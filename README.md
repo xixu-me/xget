@@ -2713,7 +2713,7 @@ npm run test:run
 npm run test:coverage
 
 # Watch mode
-npm run test:watch
+docker pull ghcr.io/xixu-me/xget:latest
 ```
 
 ### Test Coverage
