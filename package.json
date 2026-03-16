@@ -5,7 +5,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
-    "@cloudflare/vitest-pool-workers": "^0.12.20",
+    "@cloudflare/vitest-pool-workers": "^0.13.0",
     "@cloudflare/workers-types": "^4.20260307.1",
     "@eslint/js": "^10.0.1",
     "eslint": "^10.0.3",
