@@ -53,6 +53,7 @@
  * - `crates` - Rust crates.io (crates.io)
  * - `packagist` - PHP Packagist (repo.packagist.org)
  * - `flathub` - Flathub Flatpak repository (dl.flathub.org)
+ * - `openwrt` - OpenWrt firmware and packages (downloads.openwrt.org)
  *
  * **Linux Distributions:**
  * - `debian` - Debian packages (deb.debian.org)
@@ -162,6 +163,7 @@ export const PLATFORMS = {
   crates: 'https://crates.io',
   packagist: 'https://repo.packagist.org',
   flathub: 'https://dl.flathub.org',
+  openwrt: 'https://downloads.openwrt.org',
 
   // Linux Distributions
   debian: 'https://deb.debian.org',

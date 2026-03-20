@@ -45,6 +45,7 @@
 [![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white)](#rust-軟體包管理加速)
 [![Packagist](https://img.shields.io/badge/Packagist-F28D1A?logo=packagist&logoColor=white)](#php-軟體包管理加速)
 [![Flathub](https://img.shields.io/badge/Flathub-000000?logo=flathub&logoColor=white)](#flathub-儲存庫鏡像)
+[![OpenWrt](https://img.shields.io/badge/OpenWrt-00B5E2?logo=openwrt&logoColor=white)](#openwrt-軟體包管理加速)
 [![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=white)](#debianubuntu-apt-配置)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)](#debianubuntu-apt-配置)
 [![Fedora](https://img.shields.io/badge/Fedora-51A2DA?logo=fedora&logoColor=white)](#fedora-dnf-配置)
@@ -259,6 +260,7 @@ classDiagram
 | Rust Crates      | `crates`    | `https://crates.io/...`                                             | `https://xget.xi-xu.me/crates/...`                                               |
 | Packagist        | `packagist` | `https://repo.packagist.org/...`                                    | `https://xget.xi-xu.me/packagist/...`                                            |
 | Flathub          | `flathub`   | `https://dl.flathub.org/...`                                        | `https://xget.xi-xu.me/flathub/...`                                              |
+| Openwrt          | `openwrt`   | `https://downloads.openwrt.org/...`                                 | `https://xget.xi-xu.me/openwrt/...`                                              |
 | Debian           | `debian`    | `https://deb.debian.org/...`                                        | `https://xget.xi-xu.me/debian/...`                                               |
 | Ubuntu           | `ubuntu`    | `https://archive.ubuntu.com/...`                                    | `https://xget.xi-xu.me/ubuntu/...`                                               |
 | Fedora           | `fedora`    | `https://dl.fedoraproject.org/...`                                  | `https://xget.xi-xu.me/fedora/...`                                               |
@@ -1774,6 +1776,58 @@ OSTREE_DEBUG_HTTP=1 flatpak remote-ls flathub
 
 # 更新已安裝的應用程式與執行時
 flatpak update
+```
+
+### Openwrt 軟體包管理加速
+
+#### 配置 OpenWrt opkg 使用 Xget 鏡像
+
+```bash
+# 備份原始 opkg 配置
+cp /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.backup
+
+# 配置 OpenWrt 使用 Xget 鏡像
+cat > /etc/opkg/distfeeds.conf << 'EOF'
+src/gz openwrt_core https://xget.xi-xu.me/openwrt/releases/23.05.5/targets/ramips/mt7621/packages
+src/gz openwrt_base https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/base
+src/gz openwrt_luci https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/luci
+src/gz openwrt_packages https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/packages
+src/gz openwrt_routing https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/routing
+src/gz openwrt_telephony https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/telephony
+EOF
+
+# 更新軟體包列表
+opkg update
+```
+
+#### 支援的 OpenWrt 服務
+
+```url
+# OpenWrt 發布版本
+https://xget.xi-xu.me/openwrt/releases/...
+
+# OpenWrt 快照版本
+https://xget.xi-xu.me/openwrt/snapshots/...
+
+# OpenWrt 軟體包
+https://xget.xi-xu.me/openwrt/releases/.../packages/...
+https://xget.xi-xu.me/openwrt/snapshots/.../packages/...
+```
+
+#### 使用範例
+
+```bash
+# 下載特定版本的韌體
+wget https://xget.xi-xu.me/openwrt/releases/23.05.5/targets/ramips/mt7621/openwrt-23.05.5-ramips-mt7621-xiaomi_mi-router-4a-gigabit-squashfs-sysupgrade.bin
+
+# 下載特定架構的軟體包
+wget https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/base/libc_1.2.4-4_mipsel_24kc.ipk
+
+# 下載 ImageBuilder 用於自訂建置
+wget https://xget.xi-xu.me/openwrt/releases/23.05.5/targets/ramips/mt7621/openwrt-imagebuilder-23.05.5-ramips-mt7621.Linux-x86_64.tar.xz
+
+# 下載快照版本
+wget https://xget.xi-xu.me/openwrt/snapshots/targets/ramips/mt7621/openwrt-ramips-mt7621-xiaomi_mi-router-4a-gigabit-squashfs-sysupgrade.bin
 ```
 
 ### Linux 發行版加速

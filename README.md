@@ -46,6 +46,7 @@
 [![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white)](#rust-package-acceleration)
 [![Packagist](https://img.shields.io/badge/Packagist-F28D1A?logo=packagist&logoColor=white)](#php-package-acceleration)
 [![Flathub](https://img.shields.io/badge/Flathub-000000?logo=flathub&logoColor=white)](#flathub-repository-mirror)
+[![OpenWrt](https://img.shields.io/badge/OpenWrt-00B5E2?logo=openwrt&logoColor=white)](#openwrt-package-acceleration)
 [![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=white)](#debianubuntu-apt-configuration)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)](#debianubuntu-apt-configuration)
 [![Fedora](https://img.shields.io/badge/Fedora-51A2DA?logo=fedora&logoColor=white)](#fedora-dnf-configuration)
@@ -293,6 +294,7 @@ instance, simply replace the domain and add the platform prefix:
 | Rust Crates            | `crates`        | `https://crates.io/...`                                              | `https://xget.xi-xu.me/crates/...`                                                |
 | Packagist              | `packagist`     | `https://repo.packagist.org/...`                                     | `https://xget.xi-xu.me/packagist/...`                                             |
 | Flathub                | `flathub`       | `https://dl.flathub.org/...`                                         | `https://xget.xi-xu.me/flathub/...`                                               |
+| Openwrt                | `openwrt`       | `https://downloads.openwrt.org/...`                                         | `https://xget.xi-xu.me/openwrt/...`                                               |
 | Debian                 | `debian`        | `https://deb.debian.org/...`                                         | `https://xget.xi-xu.me/debian/...`                                                |
 | Ubuntu                 | `ubuntu`        | `https://archive.ubuntu.com/...`                                     | `https://xget.xi-xu.me/ubuntu/...`                                                |
 | Fedora                 | `fedora`        | `https://dl.fedoraproject.org/...`                                   | `https://xget.xi-xu.me/fedora/...`                                                |
@@ -1813,6 +1815,58 @@ OSTREE_DEBUG_HTTP=1 flatpak remote-ls flathub
 
 # Update installed apps and runtimes
 flatpak update
+```
+
+### Openwrt Package Acceleration
+
+#### Configure OpenWrt opkg to Use Xget Mirror
+
+```bash
+# Backup original opkg configuration
+cp /etc/opkg/distfeeds.conf /etc/opkg/distfeeds.conf.backup
+
+# Configure OpenWrt to use Xget mirror
+cat > /etc/opkg/distfeeds.conf << 'EOF'
+src/gz openwrt_core https://xget.xi-xu.me/openwrt/releases/23.05.5/targets/ramips/mt7621/packages
+src/gz openwrt_base https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/base
+src/gz openwrt_luci https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/luci
+src/gz openwrt_packages https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/packages
+src/gz openwrt_routing https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/routing
+src/gz openwrt_telephony https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/telephony
+EOF
+
+# Update package lists
+opkg update
+```
+
+#### Supported OpenWrt Services
+
+```url
+# OpenWrt releases
+https://xget.xi-xu.me/openwrt/releases/...
+
+# OpenWrt snapshots
+https://xget.xi-xu.me/openwrt/snapshots/...
+
+# OpenWrt packages
+https://xget.xi-xu.me/openwrt/releases/.../packages/...
+https://xget.xi-xu.me/openwrt/snapshots/.../packages/...
+```
+
+#### Usage Examples
+
+```bash
+# Download specific firmware version
+wget https://xget.xi-xu.me/openwrt/releases/23.05.5/targets/ramips/mt7621/openwrt-23.05.5-ramips-mt7621-xiaomi_mi-router-4a-gigabit-squashfs-sysupgrade.bin
+
+# Download packages for specific architecture
+wget https://xget.xi-xu.me/openwrt/releases/23.05.5/packages/mipsel_24kc/base/libc_1.2.4-4_mipsel_24kc.ipk
+
+# Download ImageBuilder for custom builds
+wget https://xget.xi-xu.me/openwrt/releases/23.05.5/targets/ramips/mt7621/openwrt-imagebuilder-23.05.5-ramips-mt7621.Linux-x86_64.tar.xz
+
+# Download snapshot builds
+wget https://xget.xi-xu.me/openwrt/snapshots/targets/ramips/mt7621/openwrt-ramips-mt7621-xiaomi_mi-router-4a-gigabit-squashfs-sysupgrade.bin
 ```
 
 ### Linux Distribution Acceleration
