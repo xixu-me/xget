@@ -1,0 +1,49 @@
+{
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.13.3",
+    "@cloudflare/workers-types": "^4.20260307.1",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^10.0.1",
+    "@vitest/coverage-istanbul": "^4.1.0",
+    "eslint": "^10.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsdoc": "^62.8.0",
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-lib-report": "^3.0.1",
+    "istanbul-reports": "^3.2.0",
+    "prettier": "^3.8.1",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0",
+    "wrangler": "^4.76.0"
+  },
+  "name": "xget",
+  "license": "AGPL-3.0-or-later",
+  "private": false,
+  "scripts": {
+    "commitlint": "commitlint --last --verbose",
+    "commitmsg": "commitlint --edit",
+    "deploy": "wrangler pages deploy .",
+    "dev": "wrangler dev",
+    "format": "prettier --write src/ test/ *.js *.json",
+    "format:check": "prettier --check src/ test/ *.js *.json",
+    "lint": "eslint src/ test/ adapters/",
+    "lint:fix": "eslint src/ test/ adapters/ --fix",
+    "prepare": "simple-git-hooks",
+    "start": "wrangler pages dev .",
+    "test": "vitest",
+    "test:coverage": "vitest run --config vitest.coverage.config.js --coverage",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit $1"
+  },
+  "type": "module"
+}
