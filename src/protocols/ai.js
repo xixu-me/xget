@@ -1,0 +1,53 @@
+/**
+ * Xget - High-performance acceleration engine for developer resources
+ * Copyright (C) Xi Xu
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/**
+ * AI Inference protocol handler for Xget
+ */
+
+/**
+ * Detects if a request is for an AI inference provider API.
+ *
+ * Identifies AI inference requests by checking for:
+ * - AI provider path prefix (/ip/{provider}/...)
+ * - Common AI API endpoints (chat, completions, embeddings, etc.)
+ * - AI-specific URL patterns with JSON POST requests
+ * @param {Request} request - The incoming request object
+ * @param {URL} url - Parsed URL object
+ * @returns {boolean} True if this is an AI inference request
+ */
+export function isAIInferenceRequest(request, url) {
+  void request;
+  return url.pathname.startsWith('/ip/');
+}
+
+/**
+ * Configures headers for AI protocol requests.
+ *
+ * Sets Content-Type and User-Agent headers for AI inference requests.
+ * @param {Headers} headers - The headers object to modify
+ * @param {Request} request - The original request
+ */
+export function configureAIHeaders(headers, request) {
+  if (request.method === 'POST' && !headers.has('Content-Type')) {
+    headers.set('Content-Type', 'application/json');
+  }
+  if (!headers.has('User-Agent')) {
+    headers.set('User-Agent', 'Xget-AI-Proxy/1.0');
+  }
+}
