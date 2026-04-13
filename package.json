@@ -9,7 +9,7 @@
     "@commitlint/config-conventional": "^20.5.0",
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.5.2",
-    "@vitest/coverage-istanbul": "^4.1.2",
+    "@vitest/coverage-istanbul": "^4.1.4",
     "eslint": "^10.2.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsdoc": "^62.9.0",
