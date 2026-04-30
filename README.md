@@ -906,6 +906,7 @@ the `ip/[AI Provider Prefix]` format:
 | Poe                   | `poe`           | `https://api.poe.com/...`                       | `https://xget.xi-xu.me/ip/poe/...`           |
 | Featherless AI        | `featherlessai` | `https://api.featherless.ai/...`                | `https://xget.xi-xu.me/ip/featherlessai/...` |
 | Hyperbolic            | `hyperbolic`    | `https://api.hyperbolic.xyz/...`                | `https://xget.xi-xu.me/ip/hyperbolic/...`    |
+| Atlas Cloud           | `atlascloud`    | `https://api.atlascloud.ai/v1/...`              | `https://xget.xi-xu.me/ip/atlascloud/v1/...` |
 
 ```url
 # OpenAI API original URL
@@ -931,6 +932,18 @@ https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3
 
 # Converted (add ip/huggingface prefix)
 https://xget.xi-xu.me/ip/huggingface/hf-inference/models/openai/whisper-large-v3
+
+# Atlas Cloud LLM API original URL (/v1 is required)
+https://api.atlascloud.ai/v1/chat/completions
+
+# Converted (add ip/atlascloud prefix and keep /v1)
+https://xget.xi-xu.me/ip/atlascloud/v1/chat/completions
+
+# Atlas Cloud image generation original URL
+https://api.atlascloud.ai/api/v1/model/generateImage
+
+# Converted (add ip/atlascloud prefix and keep /api/v1)
+https://xget.xi-xu.me/ip/atlascloud/api/v1/model/generateImage
 ```
 
 For use cases, see

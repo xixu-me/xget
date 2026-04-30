@@ -868,6 +868,7 @@ Xget 支持众多主流 AI 推理提供商的 API 加速，使用 `ip/[AI 推理
 | Poe            | `poe`             | `https://api.poe.com/...`                       | `https://xget.xi-xu.me/ip/poe/...`           |
 | Featherless AI | `featherlessai`   | `https://api.featherless.ai/...`                | `https://xget.xi-xu.me/ip/featherlessai/...` |
 | Hyperbolic     | `hyperbolic`      | `https://api.hyperbolic.xyz/...`                | `https://xget.xi-xu.me/ip/hyperbolic/...`    |
+| Atlas Cloud    | `atlascloud`      | `https://api.atlascloud.ai/v1/...`              | `https://xget.xi-xu.me/ip/atlascloud/v1/...` |
 
 ```url
 # OpenAI API 原始 URL
@@ -893,6 +894,18 @@ https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3
 
 # 转换后（添加 ip/huggingface 前缀）
 https://xget.xi-xu.me/ip/huggingface/hf-inference/models/openai/whisper-large-v3
+
+# Atlas Cloud LLM API 原始 URL（必须保留 /v1）
+https://api.atlascloud.ai/v1/chat/completions
+
+# 转换后（添加 ip/atlascloud 前缀，并保留 /v1）
+https://xget.xi-xu.me/ip/atlascloud/v1/chat/completions
+
+# Atlas Cloud 图像生成原始 URL
+https://api.atlascloud.ai/api/v1/model/generateImage
+
+# 转换后（添加 ip/atlascloud 前缀，并保留 /api/v1）
+https://xget.xi-xu.me/ip/atlascloud/api/v1/model/generateImage
 ```
 
 应用场景见 [AI 推理 API 加速](#ai-推理-api-加速)。

@@ -406,7 +406,8 @@ describe('Platform Configuration', () => {
         'ip-openrouter',
         'ip-poe',
         'ip-featherlessai',
-        'ip-hyperbolic'
+        'ip-hyperbolic',
+        'ip-atlascloud'
       ];
 
       aiProviders.forEach(provider => {
@@ -458,6 +459,16 @@ describe('Platform Configuration', () => {
           provider: 'ip-groq',
           inputPath: '/ip/groq/openai/v1/chat/completions',
           expectedPath: '/openai/v1/chat/completions'
+        },
+        {
+          provider: 'ip-atlascloud',
+          inputPath: '/ip/atlascloud/v1/chat/completions',
+          expectedPath: '/v1/chat/completions'
+        },
+        {
+          provider: 'ip-atlascloud',
+          inputPath: '/ip/atlascloud/api/v1/model/generateImage',
+          expectedPath: '/api/v1/model/generateImage'
         }
       ];
 
@@ -480,7 +491,8 @@ describe('Platform Configuration', () => {
         'ip-groq',
         'ip-fireworks',
         'ip-mistralai',
-        'ip-perplexity'
+        'ip-perplexity',
+        'ip-atlascloud'
       ];
 
       aiProviders.forEach(provider => {
