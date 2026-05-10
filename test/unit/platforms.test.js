@@ -143,6 +143,19 @@ describe('Platform Configuration', () => {
       );
     });
 
+    it('should transform Fedora mirror paths correctly', () => {
+      expect(
+        transformPath(
+          '/fedora/pub/fedora/linux/releases/43/Everything/x86_64/os/repodata/repomd.xml',
+          'fedora'
+        )
+      ).toBe('/releases/43/Everything/x86_64/os/repodata/repomd.xml');
+
+      expect(
+        transformPath('/fedora/releases/43/Everything/x86_64/os/repodata/repomd.xml', 'fedora')
+      ).toBe('/releases/43/Everything/x86_64/os/repodata/repomd.xml');
+    });
+
     it('should transform container registry paths correctly', () => {
       expect(
         transformPath('/cr/ghcr/v2/nginxinc/nginx-unprivileged/manifests/latest', 'cr-ghcr')
@@ -202,6 +215,10 @@ describe('Platform Configuration', () => {
 
     it('should have correct Flathub base URL', () => {
       expect(PLATFORMS.flathub).toBe('https://dl.flathub.org');
+    });
+
+    it('should use a Fedora mirror that avoids upstream bot challenges', () => {
+      expect(PLATFORMS.fedora).toBe('https://mirrors.kernel.org/fedora');
     });
 
     it('should have correct container registry base URLs', () => {

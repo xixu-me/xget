@@ -57,6 +57,15 @@ function transformCratesPath(transformedPath) {
 }
 
 /**
+ * Applies Fedora mirror path normalization.
+ * @param {string} transformedPath
+ * @returns {string} Normalized Fedora mirror path.
+ */
+function transformFedoraPath(transformedPath) {
+  return transformedPath.replace(/^\/pub\/fedora\/linux(?=\/|$)/, '') || '/';
+}
+
+/**
  * Applies Jenkins update-center path normalization.
  * @param {string} transformedPath
  * @returns {string} Normalized Jenkins path.
@@ -88,6 +97,7 @@ function transformJenkinsPath(transformedPath) {
 /** @type {{ [key: string]: (transformedPath: string) => string }} */
 const PLATFORM_PATH_TRANSFORMERS = {
   crates: transformCratesPath,
+  fedora: transformFedoraPath,
   jenkins: transformJenkinsPath
 };
 

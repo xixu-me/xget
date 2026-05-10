@@ -57,7 +57,7 @@ export const PLATFORM_CATALOG = {
   // Linux Distributions
   debian: 'https://deb.debian.org',
   ubuntu: 'https://archive.ubuntu.com',
-  fedora: 'https://dl.fedoraproject.org',
+  fedora: 'https://mirrors.kernel.org/fedora',
   rocky: 'https://download.rockylinux.org',
   opensuse: 'https://download.opensuse.org',
   arch: 'https://geo.mirror.pkgbuild.com',
