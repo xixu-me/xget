@@ -869,7 +869,7 @@ Xget 支援眾多主流 AI 推理供應商的 API 加速，使用 `ip/[AI 推理
 | Poe            | `poe`             | `https://api.poe.com/...`                       | `https://xget.xi-xu.me/ip/poe/...`           |
 | Featherless AI | `featherlessai`   | `https://api.featherless.ai/...`                | `https://xget.xi-xu.me/ip/featherlessai/...` |
 | Hyperbolic     | `hyperbolic`      | `https://api.hyperbolic.xyz/...`                | `https://xget.xi-xu.me/ip/hyperbolic/...`    |
-| Atlas Cloud    | `atlascloud`      | `https://api.atlascloud.ai/v1/...`              | `https://xget.xi-xu.me/ip/atlascloud/v1/...` |
+| Atlas Cloud    | `atlascloud`      | `https://api.atlascloud.ai/...`                 | `https://xget.xi-xu.me/ip/atlascloud/...`    |
 
 ```url
 # OpenAI API 原始 URL

@@ -906,7 +906,7 @@ the `ip/[AI Provider Prefix]` format:
 | Poe                   | `poe`           | `https://api.poe.com/...`                       | `https://xget.xi-xu.me/ip/poe/...`           |
 | Featherless AI        | `featherlessai` | `https://api.featherless.ai/...`                | `https://xget.xi-xu.me/ip/featherlessai/...` |
 | Hyperbolic            | `hyperbolic`    | `https://api.hyperbolic.xyz/...`                | `https://xget.xi-xu.me/ip/hyperbolic/...`    |
-| Atlas Cloud           | `atlascloud`    | `https://api.atlascloud.ai/v1/...`              | `https://xget.xi-xu.me/ip/atlascloud/v1/...` |
+| Atlas Cloud           | `atlascloud`    | `https://api.atlascloud.ai/...`                 | `https://xget.xi-xu.me/ip/atlascloud/...`    |
 
 > 🎁 **[Atlas Cloud](https://www.atlascloud.ai/?utm_source=github&utm_medium=link&utm_campaign=xget)** is a full-modal AI inference platform that gives developers a single AI API to access video generation, image generation, and LLM APIs. Instead of managing multiple vendor integrations, you connect once and get unified access to 300+ curated models across all modalities.
 >
