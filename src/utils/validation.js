@@ -28,6 +28,15 @@ import { isGitLFSRequest, isGitRequest } from '../protocols/git.js';
 import { isHuggingFaceAPIRequest } from '../protocols/huggingface.js';
 
 /**
+ * Checks whether the URL path targets the GitHub API platform.
+ * @param {URL} url
+ * @returns {boolean} True if the URL targets the GitHub API platform.
+ */
+function isGitHubAPIPlatform(url) {
+  return url.pathname.startsWith('/ghapi/');
+}
+
+/**
  * Computes protocol and request traits used across validation, routing, and response handling.
  * @param {Request} request
  * @param {URL} url
@@ -170,6 +179,11 @@ export function isDockerRequest(request, url) {
 // Re-export for standard usage
 export { isAIInferenceRequest, isGitLFSRequest, isGitRequest, isHuggingFaceAPIRequest };
 
+export { isGitHubAPIPlatform };
+
+/** @type {string[]} */
+const PROTOCOL_METHODS = ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE'];
+
 /**
  * Computes the allowed methods for a request based on protocol detection.
  * @param {Request} request
@@ -180,9 +194,11 @@ export { isAIInferenceRequest, isGitLFSRequest, isGitRequest, isHuggingFaceAPIRe
 export function getAllowedMethods(request, url, config = CONFIG) {
   const traits = getRequestTraits(request, url);
 
-  return isProtocolRequest(traits)
-    ? ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE']
-    : config.SECURITY.ALLOWED_METHODS;
+  if (isProtocolRequest(traits) || isGitHubAPIPlatform(url)) {
+    return PROTOCOL_METHODS;
+  }
+
+  return config.SECURITY.ALLOWED_METHODS;
 }
 
 /**
@@ -195,6 +211,7 @@ export function getAllowedMethods(request, url, config = CONFIG) {
  * Different protocols have different allowed methods:
  * - Regular requests: GET, HEAD (configurable via SECURITY.ALLOWED_METHODS)
  * - Git/LFS/Docker/AI/Hugging Face API: GET, HEAD, POST, PUT, PATCH, DELETE
+ * - GitHub API (ghapi): GET, HEAD, POST, PUT, PATCH, DELETE
  * @param {Request} request - The incoming request object
  * @param {URL} url - Parsed URL object
  * @param {import('../config/index.js').ApplicationConfig} config - Configuration object
@@ -213,9 +230,10 @@ export function validateRequest(
   config = CONFIG,
   traits = getRequestTraits(request, url)
 ) {
-  const allowedMethods = isProtocolRequest(traits)
-    ? ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE']
-    : config.SECURITY.ALLOWED_METHODS;
+  const allowedMethods =
+    isProtocolRequest(traits) || isGitHubAPIPlatform(url)
+      ? PROTOCOL_METHODS
+      : config.SECURITY.ALLOWED_METHODS;
 
   if (!allowedMethods.includes(request.method)) {
     return { valid: false, error: 'Method not allowed', status: 405 };
