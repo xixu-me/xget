@@ -97,6 +97,7 @@ export const PLATFORM_CATALOG = {
   'ip-poe': 'https://api.poe.com',
   'ip-featherlessai': 'https://api.featherless.ai',
   'ip-hyperbolic': 'https://api.hyperbolic.xyz',
+  'ip-atlascloud': 'https://api.atlascloud.ai',
 
   // Container Registries
   'cr-docker': 'https://registry-1.docker.io',

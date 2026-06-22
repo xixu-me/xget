@@ -868,6 +868,15 @@ Xget 支持众多主流 AI 推理提供商的 API 加速，使用 `ip/[AI 推理
 | Poe            | `poe`             | `https://api.poe.com/...`                       | `https://xget.xi-xu.me/ip/poe/...`           |
 | Featherless AI | `featherlessai`   | `https://api.featherless.ai/...`                | `https://xget.xi-xu.me/ip/featherlessai/...` |
 | Hyperbolic     | `hyperbolic`      | `https://api.hyperbolic.xyz/...`                | `https://xget.xi-xu.me/ip/hyperbolic/...`    |
+| Atlas Cloud    | `atlascloud`      | `https://api.atlascloud.ai/...`                 | `https://xget.xi-xu.me/ip/atlascloud/...`    |
+
+`ip/atlascloud` 路由已验证可用的 Atlas `50` 个 LLM 模型池：
+
+- `deepseek-ai/DeepSeek-V3-0324`, `deepseek-ai/deepseek-r1-0528`, `moonshotai/Kimi-K2-Instruct`, `Qwen/Qwen3-Coder`, `Qwen/Qwen3-235B-A22B-Instruct-2507`, `deepseek-ai/DeepSeek-V3.1`, `moonshotai/Kimi-K2-Instruct-0905`, `Qwen/Qwen3-Next-80B-A3B-Instruct`, `Qwen/Qwen3-Next-80B-A3B-Thinking`, `Qwen/Qwen3-30B-A3B-Instruct-2507`
+- `deepseek-ai/DeepSeek-V3.1-Terminus`, `deepseek-ai/DeepSeek-V3.2-Exp`, `zai-org/GLM-4.6`, `MiniMaxAI/MiniMax-M2`, `Qwen/Qwen3-VL-235B-A22B-Instruct`, `moonshotai/Kimi-K2-Thinking`, `google/gemini-2.5-flash`, `google/gemini-2.5-flash-lite`, `openai/gpt-5.1`, `openai/gpt-5.1-chat`
+- `openai/gpt-4o`, `openai/gpt-4o-mini`, `openai/gpt-4.1`, `openai/gpt-4.1-mini`, `openai/gpt-4.1-nano`, `openai/o1`, `openai/o3`, `openai/o3-mini`, `openai/o4-mini`, `anthropic/claude-sonnet-4.5-20250929`
+- `deepseek-ai/deepseek-v3.2`, `openai/gpt-5`, `openai/gpt-5-chat`, `openai/gpt-5-mini`, `openai/gpt-5-nano`, `openai/gpt-5.2`, `openai/gpt-5.2-chat`, `google/gemini-2.5-pro`, `anthropic/claude-opus-4.5-20251101`, `google/gemini-3-flash-preview`
+- `zai-org/glm-4.7`, `minimaxai/minimax-m2.1`, `google/gemini-2.0-flash`, `qwen/qwen3-8b`, `qwen/qwen3-235b-a22b-thinking-2507`, `qwen/qwen3-vl-235b-a22b-thinking`, `qwen/qwen3-30b-a3b`, `qwen/qwen3-30b-a3b-thinking-2507`, `deepseek-ai/deepseek-ocr`, `xai/grok-4-0709`
 
 ```url
 # OpenAI API 原始 URL
@@ -893,6 +902,18 @@ https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3
 
 # 转换后（添加 ip/huggingface 前缀）
 https://xget.xi-xu.me/ip/huggingface/hf-inference/models/openai/whisper-large-v3
+
+# Atlas Cloud LLM API 原始 URL（必须保留 /v1）
+https://api.atlascloud.ai/v1/chat/completions
+
+# 转换后（添加 ip/atlascloud 前缀，并保留 /v1）
+https://xget.xi-xu.me/ip/atlascloud/v1/chat/completions
+
+# Atlas Cloud 图像生成原始 URL
+https://api.atlascloud.ai/api/v1/model/generateImage
+
+# 转换后（添加 ip/atlascloud 前缀，并保留 /api/v1）
+https://xget.xi-xu.me/ip/atlascloud/api/v1/model/generateImage
 ```
 
 应用场景见 [AI 推理 API 加速](#ai-推理-api-加速)。
