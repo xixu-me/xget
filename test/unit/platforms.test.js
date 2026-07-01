@@ -7,6 +7,7 @@ describe('Platform Configuration', () => {
     it('should have all required platforms defined', () => {
       const requiredPlatforms = [
         'gh',
+        'ghapi',
         'gist',
         'gl',
         'sf',
@@ -47,6 +48,20 @@ describe('Platform Configuration', () => {
       );
 
       expect(transformPath('/gh/user/repo.git', 'gh')).toBe('/user/repo.git');
+    });
+
+    it('should transform GitHub API paths correctly', () => {
+      expect(transformPath('/ghapi/repos/jesseduffield/lazygit/releases/latest', 'ghapi')).toBe(
+        '/repos/jesseduffield/lazygit/releases/latest'
+      );
+
+      expect(transformPath('/ghapi/repos/microsoft/vscode', 'ghapi')).toBe(
+        '/repos/microsoft/vscode'
+      );
+
+      expect(transformPath('/ghapi/users/torvalds', 'ghapi')).toBe('/users/torvalds');
+
+      expect(transformPath('/ghapi/rate_limit', 'ghapi')).toBe('/rate_limit');
     });
 
     it('should transform GitHub Gist paths correctly', () => {
@@ -170,6 +185,10 @@ describe('Platform Configuration', () => {
   describe('Platform Base URLs', () => {
     it('should have correct GitHub base URL', () => {
       expect(PLATFORMS.gh).toBe('https://github.com');
+    });
+
+    it('should have correct GitHub API base URL', () => {
+      expect(PLATFORMS.ghapi).toBe('https://api.github.com');
     });
 
     it('should have correct GitHub Gist base URL', () => {
