@@ -421,6 +421,7 @@ describe('Platform Configuration', () => {
         'ip-novita',
         'ip-burncloud',
         'ip-openrouter',
+        'ip-orcarouter',
         'ip-poe',
         'ip-featherlessai',
         'ip-hyperbolic'
@@ -475,6 +476,11 @@ describe('Platform Configuration', () => {
           provider: 'ip-groq',
           inputPath: '/ip/groq/openai/v1/chat/completions',
           expectedPath: '/openai/v1/chat/completions'
+        },
+        {
+          provider: 'ip-orcarouter',
+          inputPath: '/ip/orcarouter/v1/chat/completions',
+          expectedPath: '/v1/chat/completions'
         }
       ];
 
@@ -487,6 +493,7 @@ describe('Platform Configuration', () => {
     it('should construct valid URLs for AI inference providers', () => {
       const aiProviders = [
         'ip-openrouter',
+        'ip-orcarouter',
         'ip-openai',
         'ip-anthropic',
         'ip-gemini',

@@ -94,6 +94,7 @@ export const PLATFORM_CATALOG = {
   'ip-novita': 'https://api.novita.ai',
   'ip-burncloud': 'https://ai.burncloud.com',
   'ip-openrouter': 'https://openrouter.ai',
+  'ip-orcarouter': 'https://api.orcarouter.ai',
   'ip-poe': 'https://api.poe.com',
   'ip-featherlessai': 'https://api.featherless.ai',
   'ip-hyperbolic': 'https://api.hyperbolic.xyz',
