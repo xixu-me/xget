@@ -3092,11 +3092,11 @@ This repository is licensed under the AGPL-3.0 License. See
 
 ## Star History
 
-<a href="https://www.star-history.com/#xixu-me/Xget&Date">
+<a href="https://star-history.dera.page/#xixu-me/Xget&type=Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=xixu-me/Xget&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=xixu-me/Xget&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=xixu-me/Xget&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=xixu-me/Xget&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=xixu-me/Xget&type=Date" />
+   <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=xixu-me/Xget&type=Date" />
  </picture>
 </a>
 
