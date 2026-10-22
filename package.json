@@ -16,7 +16,7 @@
     "prettier": "^3.9.6",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^7.0.2",
-    "vitest": "^4.1.11",
+    "vitest": "^4.1.12",
     "wrangler": "^4.110.0"
   },
   "name": "xget",
@@ -47,7 +47,7 @@
   "overrides": {
     "esbuild": "0.28.1",
     "fast-uri": "^3.1.6",
-    "@vitest/mocker": "^4.1.11",
+    "@vitest/mocker": "^4.1.12",
     "sharp": "^0.35.4",
     "js-yaml": "^4.3.2",
     "undici": "^7.29.1"
