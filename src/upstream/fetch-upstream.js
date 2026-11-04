@@ -114,6 +114,13 @@ function createFetchOptions({
   requestHeaders.set('Connection', 'keep-alive');
   requestHeaders.set('User-Agent', 'Wget/1.21.3');
 
+  // Registries such as ghcr.io reject manifest requests without content-type
+  // negotiation, so the client's Accept header must reach the upstream.
+  const acceptHeader = request.headers.get('Accept');
+  if (acceptHeader) {
+    requestHeaders.set('Accept', acceptHeader);
+  }
+
   const origin = request.headers.get('Origin');
   if (origin) {
     requestHeaders.set('Origin', origin);
