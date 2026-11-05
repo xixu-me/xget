@@ -76,6 +76,41 @@ describe('Pipeline modules', () => {
     expect(fetchSpy).toHaveBeenCalledTimes(2);
   });
 
+  it('forwards client Accept header on non-passthrough upstream fetches', async () => {
+    const accept = 'application/vnd.oci.image.index.v1+json';
+    const request = new Request(
+      'https://example.com/homebrew/bottles/v2/homebrew/core/wget/manifests/1.21.4',
+      {
+        headers: { Accept: accept }
+      }
+    );
+    const requestContext = createRequestContext(request, {});
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response('{}', {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      })
+    );
+
+    const result = await fetchUpstreamResponse({
+      authorization: null,
+      canUseCache: true,
+      config: { ...CONFIG, MAX_RETRIES: 1, RETRY_DELAY_MS: 0 },
+      effectivePath: '/homebrew/bottles/v2/homebrew/core/wget/manifests/1.21.4',
+      monitor: new PerformanceMonitor(),
+      platform: 'homebrew-bottles',
+      request,
+      requestContext,
+      shouldPassthroughRequest: false,
+      targetUrl: 'https://ghcr.io/v2/homebrew/core/wget/manifests/1.21.4'
+    });
+
+    expect(result.response.status).toBe(200);
+    const upstreamHeaders = new Headers(fetchSpy.mock.calls[0][1]?.headers);
+    expect(upstreamHeaders.get('Accept')).toBe(accept);
+    expect(upstreamHeaders.get('User-Agent')).toBe('Wget/1.21.3');
+  });
+
   it('rewrites npm metadata and refreshes content length during response finalization', async () => {
     const request = new Request('https://example.com/npm/pkg');
     const requestContext = createRequestContext(request, {});
